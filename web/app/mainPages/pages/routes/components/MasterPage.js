@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { renderRoutes } from 'react-router-config';
+import {
+    Header,
+} from '../../globals';
 
 
 export default class MasterPage extends Component {
@@ -9,9 +12,10 @@ export default class MasterPage extends Component {
 
 		return (
 			<div className="app">
-				<div className="below-header">
+                <Header />
+                <section>
                     {renderRoutes(route.routes)}
-				</div>
+                </section>
 			</div>
 		);
 	}
