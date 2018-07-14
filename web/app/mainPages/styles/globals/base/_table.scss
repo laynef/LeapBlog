@@ -1,0 +1,33 @@
+.table-overflow {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+table {
+    display: block !important;
+    width: 100%;
+    min-width: 950px !important;
+    overflow-x: auto !important;
+
+    tr, td {
+        display: flex;
+        align-items: center;
+    }
+
+    thead {
+        th {
+            min-height: 35px !important;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    tbody {
+        tr {
+            min-height: 55px !important;
+            &:hover {
+                background-color: lighten($primary, 35);
+            }
+        }
+    }
+}

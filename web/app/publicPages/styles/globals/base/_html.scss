@@ -1,0 +1,17 @@
+body,
+.app,
+.public-app,
+#public-app {
+    max-height: 100vh;
+    max-width: 100vw;
+    width: 100vw;
+    min-height: 720px;
+    overflow-x: hidden;
+}
+
+#PublicChildren {
+    position: absolute;
+    top: 15vh;
+    width: 100%;
+    height: auto;
+}

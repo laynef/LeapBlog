@@ -1,0 +1,23 @@
+footer {
+    width: 100%;
+    z-index: 0;
+    background-color: lighten($color: $gray-light, $amount: 35);
+}
+
+.footer-top {
+    height: 285px;
+    @media (max-width: -1 + $breakpoint-lg) {
+        height: 425px !important;
+    }
+    display: flex;
+
+    .footer-row {
+        flex-direction: row;
+        @media (max-width: -1 + $breakpoint-lg) {
+            flex-direction: column !important;
+        }
+    }
+}
+.footer-bottom {
+    height: 110px;
+}

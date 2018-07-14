@@ -1,0 +1,77 @@
+.children {
+    height: 100%;
+    float: left;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+#UserNav {
+    height: 100%;
+    float: left;
+    padding: 0;
+
+    @media (max-width: $breakpoint-md) {
+        height: auto !important;
+    }
+
+}
+
+.height-50 {
+    height: 50px;
+}
+
+.fs-32 {
+    font-size: 32px !important;
+}
+
+.fs-24 {
+    font-size: 24px !important;
+}
+
+.flex-sb {
+    display: flex !important;
+    justify-content: space-between !important;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-sb {
+    display: flex !important;
+    justify-content: space-between !important;
+    flex-direction: column;
+}
+
+.mobile-with-hover {
+    background-color: white;
+
+    a {
+        background-color: white;
+        color: $gray-light;
+
+        &:hover {
+            background-color: lighten($primary, 35);
+            color: $gray-light;
+        }
+    }
+}
+
+.h-95 {
+    height: 95% !important;
+}
+
+.usernav-spacer {
+    width: 25px;
+}
+
+.y-scroll {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.width-40 {
+    width: 40px;
+}
+
+.width-110 {
+    width: 110px;
+}

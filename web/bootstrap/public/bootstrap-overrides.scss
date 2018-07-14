@@ -1,0 +1,15 @@
+.h1, .h2, .h3, .h4, .h5, .h6, .h7, .p, h1, h2, h3, h4, h5, h6, h7, p, body, html {
+    -webkit-font-smoothing: antialiased;
+    -mos-osx-font-smoothing: grayscale;
+}
+
+a, .selectable-hover {
+    &:hover {
+        text-decoration: none !important;
+        color: darken($color: $gray, $amount: 15) !important;
+    }
+}
+
+.card-shadow {
+    box-shadow: 0 7px 14px 0 rgba(50,50,93,.1), 0 3px 6px 0 rgba(0,0,0,.07);
+}

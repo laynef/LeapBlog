@@ -1,0 +1,30 @@
+.hidden-xl {
+    @media(min-width: $breakpoint-xl) {
+        opacity: 0 !important;
+        display: none !important;
+    }
+}
+.hidden-lg {
+    @media(min-width: $breakpoint-lg) and (max-width: -1 + $breakpoint-xl) {
+        opacity: 0 !important;
+        display: none !important;
+    }
+}
+.hidden-md {
+    @media(min-width: $breakpoint-md) and (max-width: -1 + $breakpoint-lg) {
+        opacity: 0 !important;
+        display: none !important;
+    }
+}
+.hidden-sm {
+    @media(min-width: $breakpoint-sm) and (max-width: -1 + $breakpoint-md) {
+        opacity: 0 !important;
+        display: none !important;
+    }
+}
+.hidden-xs {
+    @media(max-width: $breakpoint-sm) {
+        opacity: 0 !important;
+        display: none !important;
+    }
+}

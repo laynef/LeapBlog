@@ -1,0 +1,64 @@
+.blog-inner-text {
+    height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.blog-container {
+    overflow: auto;
+    overflow-x: hidden;
+    width: 100%;
+
+    &-inner {
+        &:hover {
+            background-color: lighten($primary, 35);
+        }
+    }
+
+}
+
+.blog-modal {
+    max-width: 85% !important;
+    margin: 1rem auto;
+}
+
+.floating-button {
+    position: absolute;
+    right: 3%;
+    z-index: 1000;
+
+    i {
+        font-size: 80px;
+    }
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.rbc-calendar {
+    height: 82.5vh !important;
+    min-width: 1050px;
+    width: 100%;
+}
+
+.rbc-toolbar-label {
+    font-size: 24px;
+}
+
+.x-scroll {
+   display: block;
+   overflow: scroll;
+   overflow-y: hidden;
+}
+
+.y-scroll {
+    display: block;
+    overflow: scroll;
+    overflow: hidden;
+ }
+
+ .scroll {
+    display: block;
+    overflow: scroll;
+ }

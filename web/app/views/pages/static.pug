@@ -1,0 +1,12 @@
+doctype html
+html(lang='en-us')
+    head
+        include ../utils/meta.pug
+        title='Leap Blogger | ' + partials
+        style(amp-custom)
+            include ../../../assets/dist/public-app.css
+    body
+        #public-app!=reactApp
+        include ../utils/scripts.pug
+        include ../utils/noscript.pug
+        script(src=`/assets/dist/public-app.js?id=${hashId}`, async)

@@ -1,0 +1,78 @@
+.black {
+    color: $black !important;
+}
+.gray-dark {
+    color: $gray-dark !important;
+}
+.gray {
+    color: $gray !important;
+}
+.gray-light {
+    color: $gray-light !important;
+}
+.gray-lighter {
+    color: $gray-lighter !important;
+}
+.gray-lightest {
+    color: $gray-lightest !important;
+}
+.white {
+    color: $white !important;
+}
+.primary {
+    color: $brand-primary !important;
+}
+.success {
+    color: $brand-success !important;
+}
+.info {
+    color: $brand-info !important;
+}
+.warning {
+    color: $brand-warning !important;
+}
+.danger {
+    color: $brand-danger !important;
+}
+.inherit {
+    color: inherit !important;
+}
+.blue {
+    color: $blue !important;
+}
+.indigo {
+    color: $indigo !important;
+}
+.purple {
+    color: $purple !important;
+}
+.pink {
+    color: $pink !important;
+}
+.red {
+    color: $red !important;
+}
+.orange {
+    color: $orange !important;
+}
+.yellow {
+    color: $yellow !important;
+}
+.green {
+    color: $green !important;
+}
+.teal {
+    color: $teal !important;
+}
+.cyan {
+    color: $cyan !important;
+}
+.dark {
+    color: $dark !important;
+}
+.primary-outline {
+    color: $brand-primary !important;
+    &:hover {
+        color: $white !important;
+    }
+}

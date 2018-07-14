@@ -1,0 +1,19 @@
+.border-half {
+    border-width: 0.5px;
+}
+.border-white {
+    border-color: $white !important;
+}
+.bb-black {
+    border-bottom: 1px solid $black;
+}
+.bb-gray-lighterish {
+    border-bottom: 1px solid $gray-lighterish;
+}
+.no-border {
+    border: 0 !important;
+}
+.usernav-border {
+    border: 1px solid $gray-light;
+    border-radius: 4px;
+}

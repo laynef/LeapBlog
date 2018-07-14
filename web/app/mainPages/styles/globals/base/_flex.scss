@@ -1,0 +1,73 @@
+%flex {
+    display: flex;
+}
+.respond-row {
+    @extend %flex;
+    flex-direction: row;
+    @media (max-width: -1 + $breakpoint-lg) {
+        flex-direction: column !important;
+    }
+}
+.r-respond-row {
+    @extend %flex;
+    flex-direction: row;
+    @media (max-width: -1 + $breakpoint-lg) {
+        flex-direction: column-reverse !important;
+    }
+}
+.vert-center {
+    @extend %flex;
+    align-items: center;
+}
+.hort-center {
+    @extend %flex;
+    justify-content: center;
+}
+.vert-start {
+    @extend %flex;
+    align-items: flex-start;
+}
+.hort-start {
+    @extend %flex;
+    justify-content: flex-start;
+}
+.vert-end {
+    @extend %flex;
+    align-items: flex-end;
+}
+.hort-end {
+    @extend %flex;
+    justify-content: flex-end;
+}
+.f-row {
+    @extend %flex;
+    flex-direction: row;
+}
+.f-r-row {
+    @extend %flex;
+    flex-direction: row-reverse;
+}
+.f-column {
+    @extend %flex;
+    flex-direction: column;
+}
+.f-r-column {
+    @extend %flex;
+    flex-direction: column-reverse;
+}
+.f-sb {
+    @extend %flex;
+    justify-content: space-between;
+}
+.f-sa {
+    @extend %flex;
+    justify-content: space-around;
+}
+.f-wrap {
+    @extend %flex;
+    flex-wrap: wrap;
+}
+.f-nowrap {
+    @extend %flex;
+    flex-wrap: nowrap;
+}

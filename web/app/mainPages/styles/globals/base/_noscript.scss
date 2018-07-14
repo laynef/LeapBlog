@@ -1,0 +1,59 @@
+.noscript {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+
+    .heart {
+        $heart-wdith: 100px;
+        width: $heart-wdith;
+        height: $heart-wdith * (9/10);
+
+        :before, :after {
+            position: absolute;
+            content: "";
+            left: ($heart-wdith / 2);
+            top: 0;
+            width: ($heart-wdith / 2);
+            height: 80px;
+            background: $red;
+            -moz-border-radius: ($heart-wdith / 2) ($heart-wdith / 2) 0 0;
+            border-radius: ($heart-wdith / 2) ($heart-wdith / 2) 0 0;
+
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+
+            -webkit-transform-origin: 0 100%;
+            -moz-transform-origin: 0 100%;
+            -ms-transform-origin: 0 100%;
+            -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+        }
+
+        :after {
+            left: 0;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+
+            -webkit-transform-origin: 100% 100%;
+            -moz-transform-origin: 100% 100%;
+            -ms-transform-origin: 100% 100%;
+            -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+        }
+
+        .heart-text {
+            position: absolute;
+            z-index: 1000;
+            color: $white;
+            display: block;
+        }
+    }
+
+}

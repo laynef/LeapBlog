@@ -1,0 +1,13 @@
+$fa-font-path: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts';
+@import '~font-awesome/scss/font-awesome.scss';
+@import '~react-big-calendar/lib/css/react-big-calendar.css';
+
+// globals styles
+@import './globals/index';
+
+// pages styles
+@import './pages/index';
+
+// components styles
+@import './components/index';
+

@@ -1,0 +1,4 @@
+node_modules
+assets/dist
+assets/sw.js
+assets/offline.html

@@ -1,0 +1,45 @@
+#Header {
+    position: fixed;
+    z-index: 9999;
+}
+
+.underscore-selection {
+    $border-sizer: 3px;
+    border-bottom: $border-sizer solid $brand-primary;
+    margin-top: $border-sizer;
+}
+
+.mobile-dd {
+    height: 35px;
+    padding: 0 1rem;
+
+    &:hover {
+        background-color: darken($color: $white, $amount: 2.5);
+    }
+}
+
+.search-container {
+    position: absolute;
+    top: 0;
+    z-index: 1040;
+
+    i {
+        color: #929292 !important;
+        font-size: 1.4rem;
+    }
+
+    input {
+        background: inherit !important;
+        border: none !important;
+        font-size: 1.7rem;
+        min-height: 65px;
+        &:hover {
+            border: none !important;
+        }
+        &:focus {
+            border: none !important;
+            outline: none !important;
+        }
+    }
+
+}

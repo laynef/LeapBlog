@@ -1,0 +1,82 @@
+.app, #app, .main-app, #main-app {
+    width: 100vw;
+    height: 100vh;
+    background-color: #fbfbfb;
+}
+.react-link {
+    color: inherit;
+}
+.text-xs {
+    font-size: 0.5em;
+}
+.text-sm {
+    font-size: 0.75em;
+}
+.text-md {
+    font-size: 1em;
+}
+.text-lg {
+    font-size: 1.5em;
+}
+.text-xl {
+    font-size: 2em;
+}
+.text-overflow {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.text-wrap {
+    text-overflow: ellipsis;
+    white-space: wrap;
+    overflow: hidden;
+}
+.pointer {
+    cursor: pointer;
+}
+.fullscreen {
+    height: 100vh;
+    width: 100vw;
+}
+.no-opacity {
+    opacity: 0;
+}
+.inherit-with-hover {
+    a {
+        color: inherit !important;
+        &:hover {
+            background-color: lighten($primary, 35) !important;
+        }
+    }
+}
+
+textarea {
+    border-radius: 4px !important;
+}
+
+select {
+    background-color: #fbfbfb;
+    height: 35px;
+    font-family: $font-family-sans-serif;
+    color: $black;
+    border-color: lighten($gray-light, 15);
+    border-radius: 2px;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        border-color: $primary;
+    }
+
+}
+
+#SchedulerPage {
+    tbody {
+        width: 100%;
+        display: block;
+
+        tr {
+            width: 100%;
+        }
+    }
+}
