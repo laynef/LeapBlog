@@ -63,16 +63,16 @@ export default class Carsouels extends Component {
         });
 
         return (
-        <Carousel
-            activeIndex={activeIndex}
-            next={this.next}
-            previous={this.previous}
-        >
-            <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-            {slides}
-            <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-            <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-        </Carousel>
+            <Carousel
+                activeIndex={activeIndex}
+                next={this.next}
+                previous={this.previous}
+            >
+                <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+                {slides}
+                <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
+                <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+            </Carousel>
         );
     }
 

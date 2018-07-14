@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-
+import {
+    Carsouels,
+} from '../../../components/globals';
+import {
+    HomePageCarousels as items,
+} from '../../data';
 
 export default class HomePage extends Component {
 
@@ -13,7 +18,9 @@ export default class HomePage extends Component {
 	render() {
 		return (
 			<div id="HomePage">
-				<h1 className="text-center">Home Page</h1>
+                <div className="homepage-carsousel">
+                    <Carsouels items={items} />
+                </div>
 			</div>
 		);
 	}

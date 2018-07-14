@@ -1,5 +1,7 @@
 const fileNames = [
     // LEAVE HERE FOR CLI: Data Components
+    'HomePageCarousels',
+    'HomePageSections',
 ];
 
 const index = fileNames.reduce((dictionary, file) => {
