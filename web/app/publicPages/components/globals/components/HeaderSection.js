@@ -11,6 +11,7 @@ export default class HeaderSection extends Component {
 	}
 
 	render() {
+        const { title, description } = this.props;
 		return (
 			<div className="w-100 f-column vert-center hort-center p-5">
 				<h1 className="h2 text-dark text-center">{title}</h1>

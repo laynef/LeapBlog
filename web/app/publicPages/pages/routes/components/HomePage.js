@@ -5,6 +5,7 @@ import {
     TwoGrid,
     TextCard,
     DisplayCard,
+    Footer,
 } from '../../../components/globals';
 import {
     HomePageCarousels as items,
@@ -45,6 +46,7 @@ export default class HomePage extends Component {
                         />
                     </div>
                 ))}
+                <Footer />
 			</div>
 		);
 	}

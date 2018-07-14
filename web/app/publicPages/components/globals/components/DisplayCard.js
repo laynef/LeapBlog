@@ -12,8 +12,8 @@ export default class DisplayCard extends Component {
 
 	render() {
 		return (
-			<div id="DisplayCard">
-				<h1 className="text-center">DisplayCard</h1>
+			<div className="card w-100 m-2 p-3">
+				<h1 className="text-center h3">DisplayCard</h1>
 			</div>
 		);
 	}
