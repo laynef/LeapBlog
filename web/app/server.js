@@ -6,7 +6,6 @@ import Express from 'express';
 import cors from 'cors';
 import http from 'http';
 import spdy from 'spdy';
-import multer from 'multer';
 import favicon from 'serve-favicon';
 import compression from 'compression';
 import morgan from 'morgan';

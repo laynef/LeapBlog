@@ -16,6 +16,7 @@ html(lang='en-us')
         include ../utils/token.pug
         if environment == 'production'
             script(async, src=`/assets/dist/public-app.js?id=${hashId}`)
+            script(async, src='https://cdn.polyfill.io/v2/polyfill.min.js?features=String.prototype.startsWith,Array.from,Array.prototype.fill,Array.prototype.keys,Array.prototype.findIndex,Number.isInteger&flags=gated')
         if environment != 'production'
             for jsPath in jsPaths
                 script(src=`/assets/dist/${jsPath}`, async)
