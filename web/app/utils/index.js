@@ -4,13 +4,7 @@ const fileNames = [
 	'globals',
 	'fetch',
 	'AnimationWrapper',
-	'AppointmentModal',
-	'SaveButtonContainer',
-	'SaveButtonWrapper',
-	'AppointmentModalWrapper',
 	'blackListAnimationRoutes',
-	'appointmentRoutes',
-	'saveButtonRoutes',
 ];
 
 const allMethods = fileNames.reduce((acc, item) => {

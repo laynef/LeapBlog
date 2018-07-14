@@ -1,6 +1,5 @@
 const fileNames = [
     // LEAVE HERE FOR CLI: Data Components
-    'menuData',
 ];
 
 const index = fileNames.reduce((dictionary, file) => {
