@@ -7,7 +7,6 @@ html(lang='en-us')
             style(amp-custom)
                 include ../../../assets/dist/public-app.css
         if environment != 'production'
-            link(rel='stylesheet', type='text/css', href=`/assets/dist/public-app.css`)
             for cssPath in cssPaths
                 link(rel='stylesheet', type='text/css', href=`/assets/dist/${cssPath}`)
     body.body
@@ -18,6 +17,5 @@ html(lang='en-us')
         if environment == 'production'
             script(async, src=`/assets/dist/public-app.js?id=${hashId}`)
         if environment != 'production'
-            script(async, src=`/assets/dist/public-app.js`)
             for jsPath in jsPaths
                 script(src=`/assets/dist/${jsPath}`, async)
