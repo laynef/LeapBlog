@@ -1,5 +1,7 @@
 const fileNames = [
     // LEAVE HERE FOR CLI: Globals Components
+    'Subtitle',
+    'Title',
     'HeaderSection',
     'Footer',
     'Header',
