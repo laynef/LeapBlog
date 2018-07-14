@@ -13,11 +13,11 @@ export default class TopTitleCard extends Component {
 	render() {
         const { title, description, children } = this.props;
 		return (
-			<div className="w-100 f-column">
-                <h1>{title}</h1>
+			<div className="w-100 f-column m-2">
+                <h1 className="text-muted h4">{title}</h1>
                 <div className="card card-shadow">
                     {description && (
-                        <p className="p-2">{description}</p>
+                        <p className="pl-2 pr-2 pt-3 text-center">{description}</p>
                     )}
                     {children}
                 </div>
