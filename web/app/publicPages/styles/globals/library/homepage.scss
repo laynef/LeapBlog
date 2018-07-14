@@ -2,10 +2,11 @@
     height: 650px;
     width: 100%;
 
-    img {
+    .img {
         height: 650px;
         width: 100%;
-        object-fit: cover;
+        z-index: 1040;
+        background-size: cover !important;
     }
 
     .carousel-caption {
@@ -24,10 +25,13 @@
 
         h3 {
             font-size: 64px;
+            text-shadow: 0 0.5px 0 black;
         }
 
         p {
             font-size: 28px;
+            text-shadow: 0 0.5px 0 black;
         }
     }
+
 }

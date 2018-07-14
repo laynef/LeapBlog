@@ -57,7 +57,7 @@ export default class Carsouels extends Component {
                     onExited={this.onExited}
                     key={item.src}
                 >
-                    <img src={item.src} alt='' />
+                    <div style={{background: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${item.src})`}} className="img" />
                     <CarouselCaption className="d-flex" captionText={item.altText} captionHeader={item.caption} />
                 </CarouselItem>
             );
