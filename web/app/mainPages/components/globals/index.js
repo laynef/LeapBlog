@@ -1,5 +1,7 @@
 const fileNames = [
     // LEAVE HERE FOR CLI: Globals Components
+    'TopTitleCard',
+    'TwoGrid',
 ];
 
 const index = fileNames.reduce((dictionary, file) => {
