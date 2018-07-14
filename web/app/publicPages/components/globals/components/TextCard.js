@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-
-@connect((state) => ({
-	user: state.user.login.data,
-}))
 
 export default class TextCard extends Component {
 
@@ -16,9 +11,11 @@ export default class TextCard extends Component {
 	}
 
 	render() {
+        const { title, description } = this.props;
 		return (
-			<div id="TextCard">
-				<h1 className="text-center">TextCard</h1>
+			<div className="card">
+				<h1 className="h3">{title}</h1>
+				<h1 className="h6">{description}</h1>
 			</div>
 		);
 	}

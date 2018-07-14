@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-
-@connect((state) => ({
-	user: state.user.login.data,
-}))
 
 export default class HeaderSection extends Component {
 
@@ -17,8 +12,9 @@ export default class HeaderSection extends Component {
 
 	render() {
 		return (
-			<div id="HeaderSection">
-				<h1 className="text-center">HeaderSection</h1>
+			<div className="w-100 f-column vert-center hort-center p-5">
+				<h1 className="h2 text-dark text-center">{title}</h1>
+				<h2 className="h5 text-muted text-center">{description}</h2>
 			</div>
 		);
 	}

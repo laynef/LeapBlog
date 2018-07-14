@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-
-@connect((state) => ({
-	user: state.user.login.data,
-}))
 
 export default class TwoGrid extends Component {
 
@@ -16,9 +11,11 @@ export default class TwoGrid extends Component {
 	}
 
 	render() {
+        const { FirstCardComponent, SecondCardComponent } = this.props;
 		return (
-			<div id="TwoGrid">
-				<h1 className="text-center">TwoGrid</h1>
+			<div className="w-100 respond-row">
+                {FirstCardComponent}
+                {SecondCardComponent}
 			</div>
 		);
 	}
