@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-
-@connect((state) => ({
-	user: state.user.login.data,
-}))
 
 export default class TopTitleCard extends Component {
 
@@ -16,10 +11,18 @@ export default class TopTitleCard extends Component {
 	}
 
 	render() {
+        const { title, description, children } = this.props;
 		return (
-			<div id="TopTitleCard">
-				<h1 className="text-center">TopTitleCard</h1>
+			<div className="w-100 f-column">
+                <h1>{title}</h1>
+                <div className="card card-shadow">
+                    {description && (
+                        <p className="p-2">{description}</p>
+                    )}
+                    {children}
+                </div>
 			</div>
 		);
-	}
+    }
+
 }
