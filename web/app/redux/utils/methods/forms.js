@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { __CLIENT__ } from '../../../utils';
-import DateTimeField from '@starbird/react-bootstrap-datetimepicker';
 
 
 export const renderIconInput = ({input, classNameOuter='', placeholder='', autoComplete='true', icon, type, cname}) => (
@@ -42,19 +41,6 @@ export const renderQuillTextarea = ({input, custom, label, onChanges}) => {
 };
 // eslint-enable global-require
 
-export const renderDateInput = ({input, label, date, onChanges, placeholder="Please enter a date and time"}) => (
-    <div className="f-column w-100">
-        <label className="w-100">{label}</label>
-        <DateTimeField
-            {...input}
-            onChange={onChanges.bind(this)}
-            defaultText={placeholder}
-            inputFormat="MM/DD/YYYY hh:mm a"
-            viewMode="date"
-            dateTime={date}
-        />
-    </div>
-);
 
 export const textInput = ({input, placeholder="Leave a comment..."}) => (
 	<input {...input} type="text" placeholder={placeholder} className="form-control"/>

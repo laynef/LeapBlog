@@ -6,7 +6,6 @@ import createStore from '../redux/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { wrapperRoutes, globals } from '../utils';
 // LEAVE HERE FOR CLI: Page Routes Function
 import { declareApiRoutes } from './routes';
 

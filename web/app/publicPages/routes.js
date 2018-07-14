@@ -1,5 +1,4 @@
-import { routes as R, globals as G } from './pages';
-import { kebabCase } from 'lodash';
+import { routes as R } from './pages';
 import { AnimationWrapper, blackListAnimationRoutes } from '../utils';
 
 

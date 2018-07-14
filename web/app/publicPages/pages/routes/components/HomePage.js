@@ -13,7 +13,7 @@ export default class HomePage extends Component {
 	render() {
 		return (
 			<div id="HomePage">
-				<h1 className="text-center">Not Found</h1>
+				<h1 className="text-center">Home Page</h1>
 			</div>
 		);
 	}

@@ -6,14 +6,12 @@ import createStore from '../redux/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { wrapperRoutes, globals } from '../utils';
 // LEAVE HERE FOR CLI: Page Routes Function
 import { declareMainRoutes } from './routes';
 
 import './styles';
 import 'velocity-animate';
 import 'velocity-animate/velocity.ui';
-import 'react-big-calendar/lib/css/react-big-calendar';
 
 
 const dest = document.getElementById('main-app');

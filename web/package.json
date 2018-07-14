@@ -4,8 +4,8 @@
   "description": "Your new project",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "hot": "npx babel-node ./app/server.js",
+    "start": "sudo node app.js",
+    "hot": "sudo npx babel-node ./app/server.js",
     "lint": "eslint -c .eslintrc app --fix",
     "test": "karma start",
     "fresh-dev": "npm run clean:dev && npm run build:dev",

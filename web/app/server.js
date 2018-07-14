@@ -123,58 +123,113 @@ app.use((req, res, next) => {
 });
 
 app.post('/set', protection, (req, res) => {
-if (req.body.token) {
-    req.session.user[req.session.id] = req.body.user;
-    req.session.redux[req.session.user[req.session.id]] = Object.assign({}, req.session.redux[req.session.user[req.session.id]], req.body.redux);
-    req.session.token[req.session.user[req.session.id]] = req.body.token;
-} else {
-    delete req.session.user[req.session.id];
-    delete req.session.redux[req.session.user[req.session.id]];
-    delete req.session.token[req.session.user[req.session.id]];
-}
-res.sendStatus(201);
-});
-
-// Terminal Router
-seoPages.forEach(e => {
-app.use(e);
+    if (req.body.token) {
+        req.session.user[req.session.id] = req.body.user;
+        req.session.redux[req.session.user[req.session.id]] = Object.assign({}, req.session.redux[req.session.user[req.session.id]], req.body.redux);
+        req.session.token[req.session.user[req.session.id]] = req.body.token;
+    } else {
+        delete req.session.user[req.session.id];
+        delete req.session.redux[req.session.user[req.session.id]];
+        delete req.session.token[req.session.user[req.session.id]];
+    }
+    res.sendStatus(201);
 });
 
 if (process.env.NODE_ENV !== 'production') {
-const webpackConfig = require(`${pathName}/webpack/client.dev.config`);
-const compiler = require('webpack')(webpackConfig);
-app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: webpackConfig.output.publicPath,
-    serverSideRender: true,
-    quiet: true,
-    lazy: false,
-    contentBase: path.join(__dirname, '..', 'assets', 'dist'),
-    stats: {
-        context: path.join(__dirname, '..', 'assets', 'dist'),
-        assets: true,
-        cachedAssets: true,
-    },
-}));
-app.use(require('webpack-hot-middleware')(compiler, {
-    path: '/__webpack_hmr',
-    dynamicPublicPath: webpackConfig.output.publicPath,
-    heartbeat: 10 * 1000,
-    timeout: 20 * 1000,
-    reload: true,
-}));
+    const webpackConfig = require(`${pathName}/webpack/client.dev.config`);
+    const compiler = require('webpack')(webpackConfig);
+    app.use(require('webpack-dev-middleware')(compiler, {
+        noInfo: true,
+        publicPath: webpackConfig.output.publicPath,
+        serverSideRender: true,
+        quiet: true,
+        lazy: false,
+        contentBase: path.join(__dirname, '..', 'assets', 'dist'),
+        stats: {
+            context: path.join(__dirname, '..', 'assets', 'dist'),
+            assets: true,
+            cachedAssets: true,
+        },
+    }));
+    app.use(require('webpack-hot-middleware')(compiler, {
+        path: '/__webpack_hmr',
+        dynamicPublicPath: webpackConfig.output.publicPath,
+        heartbeat: 10 * 1000,
+        timeout: 20 * 1000,
+        reload: true,
+    }));
 }
 
 // Public Pages
 app.use((req, res, next) => {
-// LEAVE HERE FOR CLI: APPLICATION REGEX
-let regexMain = new RegExp(`/${process.env.BASE_MIAN_URL}/`, 'ig');
-let regexApi = new RegExp(`/${process.env.BASE_API_URL}/`, 'ig');
-if (
     // LEAVE HERE FOR CLI: APPLICATION REGEX
-    !regexMain.test(req.url) &&
-    !regexApi.test(req.url)
-) {
+    let regexMain = new RegExp(`/${process.env.BASE_MIAN_URL}/`, 'ig');
+    let regexApi = new RegExp(`/${process.env.BASE_API_URL}/`, 'ig');
+    if (
+        // LEAVE HERE FOR CLI: APPLICATION REGEX
+        !regexMain.test(req.url) &&
+        !regexApi.test(req.url)
+    ) {
+        if (process.env.NODE_ENV !== 'production') sourceMapSupport.install();
+
+        req.session.user = req.session.user  === undefined ? {} : req.session.user;
+        req.session.redux = req.session.redux  === undefined ? {} : req.session.redux;
+        req.session.token = req.session.token  === undefined ? {} : req.session.token;
+
+        let redux = !req.session.user[req.session.id] || !req.session.redux[req.session.user[req.session.id]] ? store.getState() : req.session.redux[req.session.user[req.session.id]];
+        let token = !req.session.user[req.session.id] || !req.session.token[req.session.user[req.session.id]] ? null : req.session.token[req.session.user[req.session.id]];
+
+        const userStore = createStore(redux);
+        let context = {};
+        const component = (
+            <Provider store={userStore}>
+                <StaticRouter location={req.url} context={context}>
+                    {renderRoutes(declarePublicRoutes(false))}
+                </StaticRouter>
+            </Provider>
+        );
+
+        let id = HashId;
+
+        let marketingPages = reduce(Object.assign({}, treatmentMockPages, serviceMockPages), (object, pageData, pageName) => {
+            object[kebabCase(pageName)] = pageData;
+            return object;
+        }, {});
+
+        let urlMarket = req.url.split('/');
+        urlMarket = urlMarket[urlMarket.length - 1];
+
+        let individualPage = marketingPages[urlMarket] || {};
+
+        res.status(200).render('public', {
+            hashId: id,
+            partials: individualPage.title || 'Therapy',
+            detailImage: individualPage.image,
+            keywords: publics.keywords,
+            description: publics.description,
+            host: `https://${req.headers.host}${req.url}`,
+            csrfToken: JSON.stringify(req.session.cookie.token),
+            baseUrl: process.env.BASE_URL,
+            environment: process.env.NODE_ENV,
+            jsPaths: process.env.NODE_ENV !== 'production' ? getFilePathNames(res, 'public').js : [],
+            cssPaths: process.env.NODE_ENV !== 'production' ? getFilePathNames(res, 'public').css : [],
+            fbAppId: JSON.stringify(process.env.FB_APP_ID),
+            fbApiVersion: JSON.stringify(process.env.FB_API_VERSION),
+            reactApp: ReactDOM.renderToStaticMarkup(component),
+            redux: JSON.stringify(redux),
+            google: process.env.GOOGLE_MAPS_API_KEY,
+            token: JSON.stringify(token),
+            ipLocation: JSON.stringify(req.connection.remoteAddress),
+        });
+    } else {
+        next();
+    }
+});
+
+// LEAVE HERE FOR CLI: APPLICATION ROUTER DECLARCATION
+
+// API Pages
+app.use(`/${process.env.BASE_API_URL}/`, (req, res, next) => {
     if (process.env.NODE_ENV !== 'production') sourceMapSupport.install();
 
     req.session.user = req.session.user  === undefined ? {} : req.session.user;
@@ -184,152 +239,92 @@ if (
     let redux = !req.session.user[req.session.id] || !req.session.redux[req.session.user[req.session.id]] ? store.getState() : req.session.redux[req.session.user[req.session.id]];
     let token = !req.session.user[req.session.id] || !req.session.token[req.session.user[req.session.id]] ? null : req.session.token[req.session.user[req.session.id]];
 
+    const routes = matchRoutes(declareApiRoutes(false), `/${process.env.BASE_API_URL}${req.url}`);
+
+    const isAuth = routes[routes.length - 1].route.auth !== undefined;
+
     const userStore = createStore(redux);
     let context = {};
     const component = (
         <Provider store={userStore}>
-            <StaticRouter location={req.url} context={context}>
-                {renderRoutes(declarePublicRoutes(false))}
+            <StaticRouter location={`/${process.env.BASE_API_URL}${req.url}`} context={context}>
+                {renderRoutes(declareApiRoutes(false))}
             </StaticRouter>
         </Provider>
     );
 
     let id = HashId;
 
-    let marketingPages = reduce(Object.assign({}, treatmentMockPages, serviceMockPages), (object, pageData, pageName) => {
-        object[kebabCase(pageName)] = pageData;
-        return object;
-    }, {});
-
-    let urlMarket = req.url.split('/');
-    urlMarket = urlMarket[urlMarket.length - 1];
-
-    let individualPage = marketingPages[urlMarket] || {};
-
-    res.status(200).render('public', {
-        hashId: id,
-        partials: individualPage.title || 'Therapy',
-        detailImage: individualPage.image,
-        keywords: publics.keywords,
-        description: publics.description,
-        host: `https://${req.headers.host}${req.url}`,
-        csrfToken: JSON.stringify(req.session.cookie.token),
-        baseUrl: process.env.BASE_URL,
-        environment: process.env.NODE_ENV,
-        jsPaths: process.env.NODE_ENV !== 'production' ? getFilePathNames(res, 'public').js : [],
-        cssPaths: process.env.NODE_ENV !== 'production' ? getFilePathNames(res, 'public').css : [],
-        fbAppId: JSON.stringify(process.env.FB_APP_ID),
-        fbApiVersion: JSON.stringify(process.env.FB_API_VERSION),
-        reactApp: ReactDOM.renderToStaticMarkup(component),
-        redux: JSON.stringify(redux),
-        google: process.env.GOOGLE_MAPS_API_KEY,
-        token: JSON.stringify(token),
-        ipLocation: JSON.stringify(req.connection.remoteAddress),
-    });
-} else {
-    next();
-}
-});
-
-// LEAVE HERE FOR CLI: APPLICATION ROUTER DECLARCATION
-
-// API Pages
-app.use(`/${process.env.BASE_API_URL}/`, (req, res, next) => {
-if (process.env.NODE_ENV !== 'production') sourceMapSupport.install();
-
-req.session.user = req.session.user  === undefined ? {} : req.session.user;
-req.session.redux = req.session.redux  === undefined ? {} : req.session.redux;
-req.session.token = req.session.token  === undefined ? {} : req.session.token;
-
-let redux = !req.session.user[req.session.id] || !req.session.redux[req.session.user[req.session.id]] ? store.getState() : req.session.redux[req.session.user[req.session.id]];
-let token = !req.session.user[req.session.id] || !req.session.token[req.session.user[req.session.id]] ? null : req.session.token[req.session.user[req.session.id]];
-
-const routes = matchRoutes(declareApiRoutes(false), `/${process.env.BASE_API_URL}${req.url}`);
-
-const isAuth = routes[routes.length - 1].route.auth !== undefined;
-
-const userStore = createStore(redux);
-let context = {};
-const component = (
-    <Provider store={userStore}>
-        <StaticRouter location={`/${process.env.BASE_API_URL}${req.url}`} context={context}>
-            {renderRoutes(declareApiRoutes(false))}
-        </StaticRouter>
-    </Provider>
-);
-
-let id = HashId;
-
-if (isAuth === true && !token) {
-    res.redirect(`/${process.env.BASE_MAIN_URL}/login?next=/${process.env.BASE_MAIN_URL}${req.url}`);
-} else {
-    res.status(200).render('api', {
-        reactApp: ReactDOM.renderToStaticMarkup(component),
-        redux: JSON.stringify(redux),
-        hashId: id,
-        token: JSON.stringify(token),
-        environment: process.env.NODE_ENV,
-        fbAppId: JSON.stringify(process.env.FB_APP_ID),
-        fbApiVersion: JSON.stringify(process.env.FB_API_VERSION),
-        jsPaths: process.env.NODE_ENV !== 'production' ? getFilePathNames(res, 'api').js : [],
-        cssPaths: process.env.NODE_ENV !== 'production' ? getFilePathNames(res, 'api').css : [],
-        keywords: apis.keywords,
-        csrfToken: JSON.stringify(req.session.cookie.token),
-        description: apis.description,
-        host: `https://${req.headers.host}/${process.env.BASE_API_URL}${req.url}`,
-        ipLocation: JSON.stringify(req.connection.remoteAddress),
-    });
-}
+    if (isAuth === true && !token) {
+        res.redirect(`/${process.env.BASE_MAIN_URL}/login?next=/${process.env.BASE_MAIN_URL}${req.url}`);
+    } else {
+        res.status(200).render('api', {
+            reactApp: ReactDOM.renderToStaticMarkup(component),
+            redux: JSON.stringify(redux),
+            hashId: id,
+            token: JSON.stringify(token),
+            environment: process.env.NODE_ENV,
+            fbAppId: JSON.stringify(process.env.FB_APP_ID),
+            fbApiVersion: JSON.stringify(process.env.FB_API_VERSION),
+            jsPaths: process.env.NODE_ENV !== 'production' ? getFilePathNames(res, 'api').js : [],
+            cssPaths: process.env.NODE_ENV !== 'production' ? getFilePathNames(res, 'api').css : [],
+            keywords: apis.keywords,
+            csrfToken: JSON.stringify(req.session.cookie.token),
+            description: apis.description,
+            host: `https://${req.headers.host}/${process.env.BASE_API_URL}${req.url}`,
+            ipLocation: JSON.stringify(req.connection.remoteAddress),
+        });
+    }
 });
 
 // Main Pages
 app.use(`/${process.env.BASE_MAIN_URL}/`, (req, res, next) => {
 
-if (process.env.NODE_ENV !== 'production') sourceMapSupport.install();
+    if (process.env.NODE_ENV !== 'production') sourceMapSupport.install();
 
-req.session.user = req.session.user  === undefined ? {} : req.session.user;
-req.session.redux = req.session.redux  === undefined ? {} : req.session.redux;
-req.session.token = req.session.token  === undefined ? {} : req.session.token;
+    req.session.user = req.session.user  === undefined ? {} : req.session.user;
+    req.session.redux = req.session.redux  === undefined ? {} : req.session.redux;
+    req.session.token = req.session.token  === undefined ? {} : req.session.token;
 
-let redux = !req.session.user[req.session.id] || !req.session.redux[req.session.user[req.session.id]] ? store.getState() : req.session.redux[req.session.user[req.session.id]];
-let token = !req.session.user[req.session.id] || !req.session.token[req.session.user[req.session.id]] ? null : req.session.token[req.session.user[req.session.id]];
+    let redux = !req.session.user[req.session.id] || !req.session.redux[req.session.user[req.session.id]] ? store.getState() : req.session.redux[req.session.user[req.session.id]];
+    let token = !req.session.user[req.session.id] || !req.session.token[req.session.user[req.session.id]] ? null : req.session.token[req.session.user[req.session.id]];
 
-const routes = matchRoutes(declareMainRoutes(false), `/${process.env.BASE_URL}${req.url}`);
+    const routes = matchRoutes(declareMainRoutes(false), `/${process.env.BASE_URL}${req.url}`);
 
-const isAuth = routes[routes.length - 1].route.auth !== undefined;
+    const isAuth = routes[routes.length - 1].route.auth !== undefined;
 
-const userStore = createStore(redux);
-let context = {};
-const component = (
-    <Provider store={userStore}>
-        <StaticRouter location={`/${process.env.BASE_URL}${req.url}`} context={context}>
-            {renderRoutes(declareMainRoutes(false))}
-        </StaticRouter>
-    </Provider>
-);
+    const userStore = createStore(redux);
+    let context = {};
+    const component = (
+        <Provider store={userStore}>
+            <StaticRouter location={`/${process.env.BASE_URL}${req.url}`} context={context}>
+                {renderRoutes(declareMainRoutes(false))}
+            </StaticRouter>
+        </Provider>
+    );
 
-let id = HashId;
+    let id = HashId;
 
-if (isAuth === true && !token) {
-    res.redirect(`/${process.env.BASE_MAIN_URL}/login?next=/${process.env.BASE_MAIN_URL}${req.url}`);
-} else {
-    res.status(200).render('main', {
-        reactApp: ReactDOM.renderToStaticMarkup(component),
-        redux: JSON.stringify(redux),
-        hashId: id,
-        token: JSON.stringify(token),
-        environment: process.env.NODE_ENV,
-        fbAppId: JSON.stringify(process.env.FB_APP_ID),
-        fbApiVersion: JSON.stringify(process.env.FB_API_VERSION),
-        jsPaths: process.env.NODE_ENV !== 'production' ? getFilePathNames(res, 'main').js : [],
-        cssPaths: process.env.NODE_ENV !== 'production' ? getFilePathNames(res, 'main').css : [],
-        keywords: mains.keywords,
-        csrfToken: JSON.stringify(req.session.cookie.token),
-        description: mains.description,
-        host: `https://${req.headers.host}/${process.env.BASE_URL}${req.url}`,
-        ipLocation: JSON.stringify(req.connection.remoteAddress),
-    });
-}
+    if (isAuth === true && !token) {
+        res.redirect(`/${process.env.BASE_MAIN_URL}/login?next=/${process.env.BASE_MAIN_URL}${req.url}`);
+    } else {
+        res.status(200).render('main', {
+            reactApp: ReactDOM.renderToStaticMarkup(component),
+            redux: JSON.stringify(redux),
+            hashId: id,
+            token: JSON.stringify(token),
+            environment: process.env.NODE_ENV,
+            fbAppId: JSON.stringify(process.env.FB_APP_ID),
+            fbApiVersion: JSON.stringify(process.env.FB_API_VERSION),
+            jsPaths: process.env.NODE_ENV !== 'production' ? getFilePathNames(res, 'main').js : [],
+            cssPaths: process.env.NODE_ENV !== 'production' ? getFilePathNames(res, 'main').css : [],
+            keywords: mains.keywords,
+            csrfToken: JSON.stringify(req.session.cookie.token),
+            description: mains.description,
+            host: `https://${req.headers.host}/${process.env.BASE_URL}${req.url}`,
+            ipLocation: JSON.stringify(req.connection.remoteAddress),
+        });
+    }
 });
 
 app.use((error, req, res, next) => {
