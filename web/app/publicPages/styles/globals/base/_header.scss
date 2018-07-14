@@ -1,0 +1,26 @@
+header {
+    position: absolute;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    top: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+
+    .top-nav {
+        width: 275px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    img {
+        height: 32px;
+    }
+
+    a {
+        color: $white;
+        font-size: 20px;
+    }
+}

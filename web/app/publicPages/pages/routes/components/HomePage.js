@@ -5,6 +5,7 @@ import {
     TwoGrid,
     TextCard,
     DisplayCard,
+    Header,
     Footer,
 } from '../../../components/globals';
 import {
@@ -27,6 +28,7 @@ export default class HomePage extends Component {
                 <div className="homepage-carsousel">
                     <Carsouels items={items} />
                 </div>
+                <Header />
                 {sections.map((e, i) => (
                     <div className="p-5" key={i}>
                         <HeaderSection

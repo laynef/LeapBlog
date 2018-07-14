@@ -12,9 +12,15 @@ export default class Header extends Component {
 
 	render() {
 		return (
-			<div id="Header">
-				<h1 className="text-center">Header</h1>
-			</div>
+			<header>
+				<a href="/"><img src="/assets/img/frog-logo-white.svg" alt="" /></a>
+                <div className="top-nav">
+                    <a href="https://www.linkedin.com/in/laynefaler/"><i className="fa fa-linkedin" /></a>
+                    <a href="https://github.com/laynef/LeapBlogger"><i className="fa fa-github" /></a>
+                    <a href="http://www.manoftech.com/"><i className="fa fa-cog" /></a>
+                    <a href="/login">Sign Up | Login</a>
+                </div>
+			</header>
 		);
 	}
 }
