@@ -195,7 +195,7 @@ app.use((req, res, next) => {
             description: publics.description,
             host: `https://${req.headers.host}${req.url}`,
             csrfToken: JSON.stringify(req.session.cookie.token),
-            baseUrl: process.env.BASE_URL,
+            baseUrl: process.env.BASE_MAIN_URL,
             environment: process.env.NODE_ENV,
             jsPaths: process.env.NODE_ENV !== 'production' ? getFilePathNames(res, 'public').js : [],
             cssPaths: process.env.NODE_ENV !== 'production' ? getFilePathNames(res, 'public').css : [],
@@ -276,7 +276,7 @@ app.use(`/${process.env.BASE_MAIN_URL}/`, (req, res, next) => {
     let redux = !req.session.user[req.session.id] || !req.session.redux[req.session.user[req.session.id]] ? store.getState() : req.session.redux[req.session.user[req.session.id]];
     let token = !req.session.user[req.session.id] || !req.session.token[req.session.user[req.session.id]] ? null : req.session.token[req.session.user[req.session.id]];
 
-    const routes = matchRoutes(declareMainRoutes(false), `/${process.env.BASE_URL}${req.url}`);
+    const routes = matchRoutes(declareMainRoutes(false), `/${process.env.BASE_MAIN_URL}${req.url}`);
 
     const isAuth = routes[routes.length - 1].route.auth !== undefined;
 
@@ -284,7 +284,7 @@ app.use(`/${process.env.BASE_MAIN_URL}/`, (req, res, next) => {
     let context = {};
     const component = (
         <Provider store={userStore}>
-            <StaticRouter location={`/${process.env.BASE_URL}${req.url}`} context={context}>
+            <StaticRouter location={`/${process.env.BASE_MAIN_URL}${req.url}`} context={context}>
                 {renderRoutes(declareMainRoutes(false))}
             </StaticRouter>
         </Provider>
@@ -309,7 +309,7 @@ app.use(`/${process.env.BASE_MAIN_URL}/`, (req, res, next) => {
             keywords: mains.keywords,
             csrfToken: JSON.stringify(req.session.cookie.token),
             description: mains.description,
-            host: `https://${req.headers.host}/${process.env.BASE_URL}${req.url}`,
+            host: `https://${req.headers.host}/${process.env.BASE_MAIN_URL}${req.url}`,
             ipLocation: JSON.stringify(req.connection.remoteAddress),
         });
     }

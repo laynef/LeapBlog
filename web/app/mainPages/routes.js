@@ -1,12 +1,7 @@
 import { routes as R } from './pages';
 import {
-	AppointmentModalWrapper,
-	SaveButtonWrapper,
 	AnimationWrapper,
 	blackListAnimationRoutes,
-    appointmentRoutes,
-    saveButtonRoutes,
-	__CLIENT__,
 } from '../utils';
 
 

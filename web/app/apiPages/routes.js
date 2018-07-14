@@ -2,7 +2,6 @@ import { routes as R } from './pages';
 import {
 	AnimationWrapper,
 	blackListAnimationRoutes,
-	__CLIENT__,
 } from '../utils';
 
 
