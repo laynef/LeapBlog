@@ -9,6 +9,12 @@
         background-size: cover !important;
     }
 
+    .carousel-item {
+        .d-md-block {
+            display: block;
+        }
+    }
+
     .carousel-caption {
         position: absolute;
         right: 15%;
@@ -21,20 +27,19 @@
         color: #fff;
         text-align: center;
         height: 650px;
-        margin: 265px auto;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        display: flex !important;
 
         h3 {
             font-size: 4rem;
             text-shadow: 0 0.5px 0 black;
-            width: 100%;
-            height: auto;
         }
 
         p {
             font-size: 2rem;
             text-shadow: 0 0.5px 0 black;
-            width: 100%;
-            height: auto;
         }
     }
 
