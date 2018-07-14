@@ -6,7 +6,7 @@ const fileNames = [
     'DisplayCard',
     'TextCard',
     'TwoGrid',
-    'Carsourls',
+    'Carsouels',
 ];
 
 const index = fileNames.reduce((dictionary, file) => {
