@@ -14,14 +14,6 @@ let __MOBILE__ = __CLIENT__ ? detectmob() : null;
 
 let globals = {};
 
-globals.websocket = io(process.env.NODE_ENV === 'production' ? process.env.API_URL : 'https://leapfrog.api:8443', {
-	secure: true,
-	path: '/wss',
-	reconnectionAttempts: 3,
-});
-
-globals.websocket.on('connection');
-
 export default {
     __CLIENT__,
     __MOBILE__,
