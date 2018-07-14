@@ -36,8 +36,6 @@ export const declareMainRoutes = (client=false) => {
 					component: R.NotFoundPage,
 				},
 			].map(e => {
-                if (saveButtonRoutes[e.path]) e.component = SaveButtonWrapper(e.component);
-				if (appointmentRoutes[e.path]) e.component = AppointmentModalWrapper(e.component);
 				if (!blackListAnimationRoutes[e.path]) e.component = client ? AnimationWrapper(e.component) : e.component;
 				return e;
 			}),
