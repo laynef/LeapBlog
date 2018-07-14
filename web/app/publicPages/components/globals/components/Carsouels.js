@@ -58,7 +58,7 @@ export default class Carsouels extends Component {
                     key={item.src}
                 >
                     <img src={item.src} alt={item.altText} />
-                    <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+                    <CarouselCaption className="d-flex" captionText={item.caption} captionHeader={item.caption} />
                 </CarouselItem>
             );
         });
