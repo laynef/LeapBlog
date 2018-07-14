@@ -14,8 +14,6 @@ html(lang='en-us')
         include ../utils/noscript.pug
         include ../utils/scripts.pug
         include ../utils/token.pug
-        script(async, src=`/assets/video/webrtc.min.js?id=${hashId}`)
-        script(async, src='https://js.stripe.com/v3/')
         if environment == 'production'
             script(async, src=`/assets/dist/main-app.js?id=${hashId}`)
             script(async, src='https://cdn.polyfill.io/v2/polyfill.min.js?features=String.prototype.startsWith,Array.from,Array.prototype.fill,Array.prototype.keys,Array.prototype.findIndex,Number.isInteger&flags=gated')

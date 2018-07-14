@@ -159,7 +159,7 @@ if (process.env.NODE_ENV !== 'production') {
 // Public Pages
 app.use((req, res, next) => {
     // LEAVE HERE FOR CLI: APPLICATION REGEX
-    let regexMain = new RegExp(`/${process.env.BASE_MIAN_URL}/`, 'ig');
+    let regexMain = new RegExp(`/${process.env.BASE_MAIN_URL}/`, 'ig');
     let regexApi = new RegExp(`/${process.env.BASE_API_URL}/`, 'ig');
     if (
         // LEAVE HERE FOR CLI: APPLICATION REGEX
