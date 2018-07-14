@@ -21,7 +21,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import createStore from './redux/store';
 import { Provider } from 'react-redux';
-import { serviceMockPages, treatmentMockPages } from './publicPages/pages/data';
 import { renderRoutes, matchRoutes } from 'react-router-config';
 import { StaticRouter } from 'react-router-dom';
 
@@ -191,19 +190,9 @@ app.use((req, res, next) => {
 
         let id = HashId;
 
-        let marketingPages = reduce(Object.assign({}, treatmentMockPages, serviceMockPages), (object, pageData, pageName) => {
-            object[kebabCase(pageName)] = pageData;
-            return object;
-        }, {});
-
-        let urlMarket = req.url.split('/');
-        urlMarket = urlMarket[urlMarket.length - 1];
-
-        let individualPage = marketingPages[urlMarket] || {};
-
         res.status(200).render('public', {
             hashId: id,
-            partials: individualPage.title || 'Therapy',
+            partials: process.env.BACKEND_FRAMEWORK,
             detailImage: individualPage.image,
             keywords: publics.keywords,
             description: publics.description,
@@ -262,6 +251,7 @@ app.use(`/${process.env.BASE_API_URL}/`, (req, res, next) => {
             reactApp: ReactDOM.renderToStaticMarkup(component),
             redux: JSON.stringify(redux),
             hashId: id,
+            partials: process.env.BACKEND_FRAMEWORK,
             token: JSON.stringify(token),
             environment: process.env.NODE_ENV,
             fbAppId: JSON.stringify(process.env.FB_APP_ID),
@@ -312,6 +302,7 @@ app.use(`/${process.env.BASE_MAIN_URL}/`, (req, res, next) => {
             reactApp: ReactDOM.renderToStaticMarkup(component),
             redux: JSON.stringify(redux),
             hashId: id,
+            partials: process.env.BACKEND_FRAMEWORK,
             token: JSON.stringify(token),
             environment: process.env.NODE_ENV,
             fbAppId: JSON.stringify(process.env.FB_APP_ID),
