@@ -1,5 +1,3 @@
-import { kebabCase, reduce } from 'lodash';
-
 import fs from 'fs';
 import path from 'path';
 require('dotenv').load({ path: path.join(__dirname, '..', '.env') });
