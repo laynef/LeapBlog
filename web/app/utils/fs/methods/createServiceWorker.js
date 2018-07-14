@@ -20,7 +20,7 @@ module.exports = () => {
 		fs.writeFileSync(path.join(__dirname, '..', '..', '..', '..', 'assets', 'offline.html'), `
 <html>
     <head>
-        <title>Leap Blogger</title>
+        <title>Leap Blog</title>
         <link rel="apple-touch-icon" href="/assets/img/favicon.ico">
         <link rel="apple-touch-startup-image" href="/assets/img/favicon.ico">
         <link type="image/x-icon" rel="apple-touch-icon-precomposed" href="/assets/img/favicon.ico">

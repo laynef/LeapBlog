@@ -108,7 +108,7 @@ app.use(sess({
     secret: process.env.WEB_SECRET,
     saveUninitialized: true,
     resave: false,
-    name: 'Leap Blogger',
+    name: 'Leap Blog',
     cookie: {
         secure: true,
         token: null,
@@ -193,7 +193,6 @@ app.use((req, res, next) => {
         res.status(200).render('public', {
             hashId: id,
             partials: process.env.BACKEND_FRAMEWORK,
-            detailImage: individualPage.image,
             keywords: publics.keywords,
             description: publics.description,
             host: `https://${req.headers.host}${req.url}`,
