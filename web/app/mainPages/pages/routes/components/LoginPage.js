@@ -14,7 +14,7 @@ import {
 
 
 @connect((state) => ({
-    user: state.user.login.data.dictionary,
+	user: state.user.login.data,
 }))
 
 @reduxForm({
