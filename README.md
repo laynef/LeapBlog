@@ -17,6 +17,9 @@
 ## Frontend
 
 ### Web
+
+![YAP](/docs/web-homepage.png)
+
 - Server side React and Redux on a Node.js server
 - Sass for styling with server side Bootstrap & Font Awesome
 
