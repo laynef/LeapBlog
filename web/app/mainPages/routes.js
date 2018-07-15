@@ -37,7 +37,7 @@ export const declareMainRoutes = (client=false) => {
                     exact: true,
                 },
                 {
-					path: `/${process.env.BASE_MAIN_URL}/dashboard`,
+					path: `/${process.env.BASE_MAIN_URL}/newsfeed`,
                     component: R.DashboardPage,
                     exact: true,
                 },
