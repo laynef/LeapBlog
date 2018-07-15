@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import paths from '../../../../utils';
+import { Link } from 'react-router-dom';
 
 
 @connect((state) => ({
@@ -24,13 +25,13 @@ export default class Header extends Component {
                     <img src="/assets/img/frog-logo-white.svg" alt="" />
                 </a>
                 {user && user.id ? (
-                    <a href={`/${process.env.BASE_MAIN_URL}/dashboard`}>
+                    <Link to={`/${process.env.BASE_MAIN_URL}/dashboard`}>
                         Dashboard
-                    </a>
+                    </Link>
                 ) : !!paths[path] ? (
-                    <a href={`/${process.env.BASE_MAIN_URL}/login`}>
+                    <Link to={`/${process.env.BASE_MAIN_URL}/login`}>
                         Sign Up | Login
-                    </a>
+                    </Link>
                 ) : (
                     <a href={`/${process.env.BASE_API_URL}/docs`}>
                         View API Docs
