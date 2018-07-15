@@ -11,7 +11,41 @@
 ### JavaScript: Node.js
 ### PHP: Laravel
 ### Python: Django
+
 ### Ruby: Ruby on Rails
+
+### Web
+
+- Server side React and Redux on a Node.js server
+- Sass for styling with server side Bootstrap & Font Awesome
+
+#### Installation
+
+- Add: "127.0.0.1 leapfrog.api" to your host file
+```
+sudo pico /etc/hosts
+127.0.0.1 leapfrog.api
+```
+Save the File in Pico
+
+Run Command
+```
+sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain rubyonrails/openssl/leap-frog-api-development-cert.pem
+```
+
+- To Run Application
+```
+npm install
+npm run clean:prod
+npm run build:prod
+
+// For multithreaded server
+node multithreaded.js
+
+// For single threaded
+node app.js
+```
+
 ### Scala: Play
 
 ## Frontend
