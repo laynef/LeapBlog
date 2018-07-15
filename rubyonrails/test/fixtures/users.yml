@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  add_index_to_table_name: MyString
+  email: MyString
+  password: MyString
+  image_url: MyString
+  first_name: MyString
+  last_name: MyString
+
+two:
+  email: MyString
+  add_index_to_table_name: MyString
+  email: MyString
+  password: MyString
+  image_url: MyString
+  first_name: MyString
+  last_name: MyString
