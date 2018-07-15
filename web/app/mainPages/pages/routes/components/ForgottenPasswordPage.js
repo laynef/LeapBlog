@@ -18,7 +18,7 @@ export default class ForgottenPasswordPage extends Component {
 	render() {
 		return (
 			<div id="ForgottenPasswordPage">
-				<h1 className="text-center">ForgottenPasswordPage</h1>
+				<h1 className="text-center">Forgotten Password Page</h1>
 			</div>
 		);
 	}
