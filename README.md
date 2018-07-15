@@ -27,6 +27,11 @@ sudo pico /etc/hosts
 127.0.0.1 leapfrog.api
 ```
 Save the File in Pico
+```
+CRL + X
+Y
+ENTER
+```
 
 Run Command
 ```
@@ -65,6 +70,11 @@ sudo pico /etc/hosts
 127.0.0.1 leapfrog.app
 ```
 Save the File in Pico
+```
+CRL + X
+Y
+ENTER
+```
 
 Run Command
 ```
