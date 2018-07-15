@@ -1,5 +1,6 @@
 const fileNames = [
     // LEAVE HERE FOR CLI: Globals Components
+    'CenteredSection',
     'HeaderSection',
     'TopTitleCard',
     'TwoGrid',
