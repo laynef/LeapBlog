@@ -52,6 +52,11 @@ export const declareMainRoutes = (client=false) => {
                     exact: true,
                 },
                 {
+					path: `/${process.env.BASE_MAIN_URL}/suggested`,
+                    component: R.SuggestionsPage,
+                    exact: true,
+                },
+                {
 					path: `/${process.env.BASE_MAIN_URL}/new/blog`,
                     component: R.NewBlogPage,
                     exact: true,

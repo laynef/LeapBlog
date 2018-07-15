@@ -1,5 +1,6 @@
 const fileNames = [
     // LEAVE HERE FOR CLI: Routes Components
+    'SuggestionsPage',
     'AccountPage',
     'DetailsProfilePage',
     'FollowersPage',
