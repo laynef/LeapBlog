@@ -9,7 +9,7 @@ const fileStructure = {
 const index = reduce(fileStructure, (dictionary, value, key) => {
     each(value, (v, k) => {
         dictionary[k] = v;
-    })
+    });
     return dictionary;
 }, fileStructure);
 
