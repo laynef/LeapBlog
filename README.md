@@ -26,10 +26,10 @@
 ```
 sudo pico /etc/hosts
 127.0.0.1 leapfrog.app
-``
+```
 Save the File in Pico
 
-Run
+Run Command
 ```
 sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain web/openssl/leap-frog-app-development-cert.pem
 ```
