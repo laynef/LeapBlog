@@ -21,9 +21,23 @@ export default class Header extends Component {
         const { user, path } = this.props;
 		return (
 			<header>
-                <a href="/">
-                    <img src="/assets/img/frog-logo-white.svg" alt="" />
-                </a>
+                {user && user.id ? (
+                    <div className="">
+                        <a href="/">
+                            <img src="/assets/img/frog-logo-white.svg" alt="" />
+                        </a>
+                        <Link to={`/${process.env.BASE_MAIN_URL}/blog`}>
+                            Blogs
+                        </Link>
+                        <Link to={`/${process.env.BASE_MAIN_URL}/followers`}>
+                            Followers
+                        </Link>
+                    </div>
+                ) : (
+                    <a href="/">
+                        <img src="/assets/img/frog-logo-white.svg" alt="" />
+                    </a>
+                )}
                 {user && user.id ? (
                     <Link to={`/${process.env.BASE_MAIN_URL}/dashboard`}>
                         Dashboard

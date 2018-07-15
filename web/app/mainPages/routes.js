@@ -57,7 +57,7 @@ export const declareMainRoutes = (client=false) => {
                     exact: true,
                 },
                 {
-					path: `/${process.env.BASE_MAIN_URL}/friends`,
+					path: `/${process.env.BASE_MAIN_URL}/followers`,
                     component: R.FollowersPage,
                     exact: true,
                 },
