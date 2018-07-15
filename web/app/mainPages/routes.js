@@ -41,6 +41,26 @@ export const declareMainRoutes = (client=false) => {
                     component: R.DashboardPage,
                     exact: true,
                 },
+                {
+					path: `/${process.env.BASE_MAIN_URL}/blog`,
+                    component: R.BlogPage,
+                    exact: true,
+                },
+                {
+					path: `/${process.env.BASE_MAIN_URL}/new/blog`,
+                    component: R.NewBlogPage,
+                    exact: true,
+                },
+                {
+					path: `/${process.env.BASE_MAIN_URL}/friends`,
+                    component: R.FollowersPage,
+                    exact: true,
+                },
+                {
+					path: `/${process.env.BASE_MAIN_URL}/profile/:id`,
+                    component: R.DetailsProfilePage,
+                    exact: true,
+                },
 				{
 					path: `/${process.env.BASE_MAIN_URL}/*`,
 					component: R.NotFoundPage,
