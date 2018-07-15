@@ -3,6 +3,7 @@ const fileNames = [
 	'dates',
 	'globals',
 	'fetch',
+	'mainPageHeader',
 	'AnimationWrapper',
 	'blackListAnimationRoutes',
 ];

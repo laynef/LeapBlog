@@ -1,7 +1,6 @@
 const fileNames = [
 	'createServiceWorker',
 	'getFilePathNames',
-	'mainPageHeader',
 	'makeHash',
 ];
 

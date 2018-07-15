@@ -8,11 +8,11 @@ import {
 export default class MasterPage extends Component {
 
 	render() {
-		const { route } = this.props;
+		const { route, location } = this.props;
 
 		return (
 			<div className="app">
-                <Header />
+                <Header path={location && location.pathname ? location.pathname : null} />
                 <section>
                     {renderRoutes(route.routes)}
                 </section>
