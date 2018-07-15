@@ -21,10 +21,10 @@
 
 #### Installation
 
-- Add: "127.0.0.1 leapfrog.api" to your host file
+- Add: "127.0.0.1 leapblog.api" to your host file
 ```
 sudo pico /etc/hosts
-127.0.0.1 leapfrog.api
+127.0.0.1 leapblog.api
 ```
 Save the File in Pico
 ```
@@ -64,10 +64,10 @@ node app.js
 
 #### Installation
 
-- Add: "127.0.0.1 leapfrog.app" to your host file
+- Add: "127.0.0.1 leapblog.app" to your host file
 ```
 sudo pico /etc/hosts
-127.0.0.1 leapfrog.app
+127.0.0.1 leapblog.app
 ```
 Save the File in Pico
 ```
