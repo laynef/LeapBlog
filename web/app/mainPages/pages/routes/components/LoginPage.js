@@ -47,7 +47,7 @@ export default class LoginPage extends Component {
                     description="If you don't have an account with us. Please sign up and we'll quickly leap you into your first blog"
                 />
                 <TwoGrid
-                    FirstCardComponent={
+                    FirstCardComponent={(
                         <TopTitleCard title="Sign Up" description="Are you a new member? Get started here">
                             <Form className="p-3" onSubmit={handleSubmit(this.handleSignUpSubmit.bind(this))} action={null}>
                                 <Field placeholder="Enter email" classNameOuter="f-column" classNameInput="w-100" component={renderInput} label="Email" name="sign-up-email" />
@@ -56,17 +56,17 @@ export default class LoginPage extends Component {
                                 <Button type="submit" className="w-100 mt-2 btn-outline-secondary">Sign Up</Button>
                             </Form>
                         </TopTitleCard>
-                    }
-                    SecondCardComponent={
+                    )}
+                    SecondCardComponent={(
                         <TopTitleCard title="Login" description="Already have an account? Login here">
                             <Form className="pl-3 pr-3 pb-2" onSubmit={handleSubmit(this.handleLoginSubmit.bind(this))} action={null}>
                                 <Field placeholder="Enter email" classNameOuter="f-column" classNameInput="w-100" component={renderInput} label="Email" name="login-email" />
                                 <Field text="password" placeholder="Enter password" classNameOuter="f-column" classNameInput="w-100" component={renderInput} label="Password" name="login-password" />
-                                <Link className="w-100" to="/forgotten/password">Forgot your password? Click here</Link>
+                                <Link className="w-100" to={`/${process.env.BASE_MAIN_URL}/forgotten/password`}>Forgot your password? Click here</Link>
                                 <Button type="submit" className="w-100 mt-2 btn-outline-secondary">Login</Button>
                             </Form>
                         </TopTitleCard>
-                    }
+                    )}
                 />
 			</div>
 		);
