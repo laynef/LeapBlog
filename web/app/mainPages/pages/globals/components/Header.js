@@ -32,7 +32,7 @@ export default class Header extends Component {
                         Sign Up | Login
                     </a>
                 ) : (
-                    <a href={`/${process.env.BASE_MAIN_URL}/docs`}>
+                    <a href={`/${process.env.BASE_API_URL}/docs`}>
                         View API Docs
                     </a>
                 )}
