@@ -1,9 +1,5 @@
 const fileNames = [
     // LEAVE HERE FOR CLI: Routes Components
-    'DocumentationPage',
-    'MasterPage',
-    'NotFoundPage',
-    'PublicPage',
 ];
 
 const index = fileNames.reduce((dictionary, file) => {
