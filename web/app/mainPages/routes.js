@@ -31,6 +31,11 @@ export const declareMainRoutes = (client=false) => {
                     component: R.ForgottenPasswordPage,
                     exact: true,
                 },
+                {
+					path: `/${process.env.BASE_MAIN_URL}/profile`,
+                    component: R.ProfilePage,
+                    exact: true,
+                },
 				{
 					path: `/${process.env.BASE_MAIN_URL}/*`,
 					component: R.NotFoundPage,
