@@ -7,7 +7,13 @@ class UserController < ApplicationController
     include JWT
 
     def login
-
+        @user = User.find_by_email(params[:email])
+        password = BCrypt::Password.new(@user.password)
+        if password == params[:password]
+            #
+        else
+            render json: {   }, status: 400
+        end
     end
 
     def register
