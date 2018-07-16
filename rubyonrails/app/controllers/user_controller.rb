@@ -26,6 +26,10 @@ class UserController < ApplicationController
 
     end
 
+    def user_by_id
+        render json: User.find({ id: params[:id] }), status: 200
+    end
+
     private
     def hasher
         chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQSTRUVWXYZ1234567890-=!@#$%^&*()_+"
