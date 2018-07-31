@@ -7,7 +7,7 @@ echo '''package main
 import "fmt"
 
 func main() {
-    fmt.Println("Meet the Fockers")
+    fmt.Println("Leap my into space")
 }
 ''' >> src/github.com/nf/hello/hello.go
 cd src/github.com/nf/hello/
